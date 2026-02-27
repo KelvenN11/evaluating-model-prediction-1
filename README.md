@@ -23,5 +23,9 @@ diff test: 100.0%
 ```
 which mean that they are truly different
 
+In evaluating the model we'll use 3 test
+1. MAE (Mean abosulte error)
+2. MSE (Mean square error)
+3. Directional
 
-
+All of these test will be checked on log(return) which is directly from the data we have (because in getData we have change the price into log(return))
