@@ -1,2 +1,18 @@
 # evaluating-model-prediction-1
-Create model predictions to predict crude oil price and then comparing them
+
+In crude oil, there are 2 benchmark.
+
+- WTI (ticker: CL=F) is the benchmark price for US. They are
+controlled and affected by US Market, demand, bottleneck for
+shipping, etc.
+- Brent (ticker: BZ=F) is the benchmark price for Europe, Asia,
+and Middle East (basically global). 
+
+Why they are different ?
+
+WTI is landlocked at cushing (America) which mean that its
+targeted market can only be around America making it sensitive to America storage constraint, pipeline, and its market.
+
+Brent on the other hand, located near sea which mean it can reached out more country. That's why Brent usually regarded as the global benchmark.
+
+
