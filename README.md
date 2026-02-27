@@ -15,4 +15,13 @@ targeted market can only be around America making it sensitive to America storag
 
 Brent on the other hand, located near sea which mean it can reached out more country. That's why Brent usually regarded as the global benchmark.
 
+I add checkData.py to check whether they differ that much or not
+and after running it, I got
+```
+diff train: 100.0%
+diff test: 100.0%
+```
+which mean that they are truly different
+
+
 

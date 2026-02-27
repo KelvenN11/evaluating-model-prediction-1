@@ -1,17 +1,31 @@
 import yfinance as yf
+import numpy as np
 
 def getData():
     ticker_US = yf.Ticker("CL=F")
     ticker_global = yf.Ticker("BZ=F")
 
-    # we create 3 dataset
-    # 1. pure US data set
-    # 2. pure global data set
-    # 3. i% US data set and (100-i)% global data set
-
     data_US = ticker_US.history(period="10y")
     data_global = ticker_global.history(period="10y")
+    
+    data_US, data_global = data_US.align(data_global, join='inner', axis=0)
+    valid_mask = (data_US["Close"] > 0) & (data_global["Close"] > 0)
 
+    # We only want close price
+    data_US = data_US[valid_mask]
+    data_global = data_global[valid_mask]
+    
+    data_US = np.array(data_US["Close"])
+    data_global = np.array(data_global["Close"])
+    
+    # find the log
+    data_US = np.log(data_US[1:] / data_US[:-1])
+    data_global = np.log(data_global[1:] / data_global[:-1])
+    
+    data_US = data_US[~np.isnan(data_US)]
+    data_global = data_global[~np.isnan(data_global)]
+    
+    
     # We'll use 80-20 rule for dividing train and test
 
     split = int(len(data_US) * 0.8)
