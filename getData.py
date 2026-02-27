@@ -10,10 +10,7 @@ def getData():
     # 3. i% US data set and (100-i)% global data set
 
     data_US = ticker_US.history(period="10y")
-    data_global = ticker_US.history(period="10y")
-    data_combined = [(i * data_US + (100 - i) * data_global) / 100 
-                    for i in range(0, 100)]
-
+    data_global = ticker_global.history(period="10y")
 
     # We'll use 80-20 rule for dividing train and test
 
