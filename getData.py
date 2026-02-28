@@ -25,16 +25,20 @@ def getData():
     data_US = data_US[~np.isnan(data_US)]
     data_global = data_global[~np.isnan(data_global)]
     
+    window = 5
     
-    # We'll use 80-20 rule for dividing train and test
-
-    split = int(len(data_US) * 0.8)
-
-    data_US_train = data_US[:split]
-    data_US_test = data_US[split:]
-
-    data_global_train = data_global[:split]
-    data_global_test = data_global[split:]
+    data_US_train = []
+    data_US_test = []
+    data_global_train = []
+    data_global_test = []
+    
+    for t in range(window, len(data_US)-1):
+        data_US_train.append(data_US[t-window:t])
+        data_US_test.append(data_US[t])
+        
+    for t in range(window, len(data_global)-1):
+        data_global_train.append(data_global[t-window:t])
+        data_global_test.append(data_global[t])
     
     return data_US_train, data_US_test, data_global_train, data_global_test
 
